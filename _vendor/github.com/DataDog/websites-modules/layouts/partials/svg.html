@@ -1,0 +1,24 @@
+<!-- 1. getting source svg file -->
+{{ $file_path := print "static/img/svg-icons/" .src }}
+
+{{ $svg_cont := readFile $file_path }}
+
+<!-- 2. set size -->
+{{ if .size }}
+   {{ .context.Scratch.Set "size" .size }}
+{{ else }}
+   {{ .context.Scratch.Set "size" "100%" }}
+{{ end }}
+
+<!-- 3. set color -->
+{{ if .color }}
+   {{ .context.Scratch.Set "color" .color }}
+{{ else }}
+   {{ .context.Scratch.Set "color" "#000000" }}
+{{ end }}
+
+<!-- 4. drawing svg -->
+{{ $svg_cont := replace $svg_cont "default-size" (.context.Scratch.Get "size") }}
+{{ $svg_cont := replace $svg_cont "default-fill" (.context.Scratch.Get "color") }}
+{{ $svg_cont := replace $svg_cont "default-opacity" (.context.Scratch.Get "opacity") }}
+{{ $svg_cont | safeHTML }}

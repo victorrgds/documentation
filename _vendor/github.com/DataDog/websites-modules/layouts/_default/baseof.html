@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html class="" lang="{{ .Site.Language.Lang }}" itemscope itemtype="http://schema.org/Article">
+
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>{{ .Title }}</title>
+
+    {{ with .Site.Params.custom_css }}
+
+      {{ if $.Site.IsServer }}
+        {{ $options := (dict "enableSourceMap" true) }}
+        {{ $style := resources.Get . | toCSS $options  }}
+        <link rel="stylesheet" href="{{ $style.Permalink }}">
+      {{ else }}
+        {{ $style := resources.Get . | toCSS | minify | fingerprint  }}
+        <link rel="stylesheet" href="{{ $style.Permalink }}">
+      {{ end }}
+    {{ end }}
+
+  </head>
+
+  <body class="{{ if .IsPage }}{{ replace $.Type "/" "-" }}{{ else if .IsHome }}home{{ else }}{{ .Section }}{{ end }}">
+
+    {{ block "navigation" . }}
+          <div class="main-nav-wrapper">
+              {{ partial "nav/main-nav" . }} {{/* imported from websites-modules */}}
+          </div>
+    {{ end }}
+    <main role="main">
+      {{ block "main" . }}{{ end }}
+    </main>
+    {{ block "footer" . }}
+      {{ partialCached "main-footer.html" . }}
+    {{ end }}
+
+    {{ block "app-signup" . }}
+      {{/*  App signup modal  */}}
+      <div class="modal signup-modal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header text-center align-items-center">
+                    <h2 class="modal-title font-weight-normal text-center w-100 text-primary">{{ i18n "get_started_with_datadog" }}</h2>
+                    <button type="button" data-dismiss="modal" class="close" style="font-size: 33px;"><span aria-hidden="true">×</span></button>
+                </div>
+                <div class="modal-body">
+                    {{ partial "signup-iframe.html" (dict "context" . "class" "signup-iframe js-signup-frame w-100" "width" "" "height" "740") }}
+                </div>
+            </div>
+        </div>
+      </div>
+    {{ end }}
+
+    {{/*  theme scripts  */}}
+    {{ block "theme-scripts" . }}
+      
+      {{ $options := dict }}
+      {{ if .Site.IsServer }}
+      {{ $options = (dict "sourcemap" "inline" ) }}
+      {{ $themeScript := resources.Get "js/theme.js" | js.Build $options | babel }}
+      <script src="{{ $themeScript.Permalink }}"></script>
+      {{ else }}
+      {{ $themeScript := resources.Get "js/theme.js" | js.Build $options | babel | minify | fingerprint }}
+      <script src="{{ $themeScript.Permalink }}"></script>
+      {{ end }}
+
+    {{ end }}
+
+    {{/*  consuming site scripts  */}}
+    {{ block "footer-scripts" . }}{{ end }}
+
+  </body>
+
+</html>

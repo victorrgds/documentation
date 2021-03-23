@@ -1,0 +1,145 @@
+{{ $SignUpClass := .Site.Params.SignUpClass }}
+{{ $btnClass := "btn btn-secondary btn-info btn-outline outline knockout-around" }}
+{{ $base := "" | absLangURL }}
+{{ $dot := . }}
+<ul class="">
+  {{ range .Site.Menus.main_left }}
+    {{ if .HasChildren }}
+      <li class="dropdown">
+        <a href="#" class="dropdown-toggle text-uppercase font-weight-semibold" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="true">
+          <div class="nav-menu-item ml-2">
+            {{ .Name | safeHTML }}
+            <span class="caret">
+                <svg viewBox="0 0 17.78 10.51" width="10px">
+                  <polyline class="dropdown-arrow" points="16.92 1.14 8.92 9.14 0.92 1.14"/>
+                </svg>
+            </span>
+          </div>
+        </a>
+        <ul class="dropdown-menu">
+          {{ if eq .Identifier "solutions" }}
+            <p class="small font-weight-semibold text-uppercase ml-4 no-event">Industry</p>
+            {{ range .Children }}
+              {{ if eq .Title "industry" }}
+              <li>
+                <a href="{{- partial "menulink" (slice .Identifier ( .URL ) $base $dot ) | safeURL -}}">
+                  <div class="nav-menu-item-children">
+                    {{ .Name | safeHTML }}
+                  </div>
+                </a>
+              </li>
+              {{ end }}
+            {{ end }}
+<!--             <p class="small font-weight-semibold text-uppercase ml-4 no-event">Technology</p>
+            {{ range .Children }}
+              {{ if eq .Title "technology" }}
+              <li>
+                <a href="{{- partial "menulink" (slice .Identifier ( .URL ) $base $dot ) | safeURL -}}">
+                  <div class="nav-menu-item-children">
+                    {{ .Name | safeHTML }}
+                  </div>
+                </a>
+              </li>
+              {{ end }}
+            {{ end }} -->
+            <p class="small font-weight-semibold text-uppercase ml-4 no-event">Use-Case</p>
+            {{ range .Children }}
+              {{ if eq .Title "usecase" }}
+              <li>
+                <a href="{{- partial "menulink" (slice .Identifier ( .URL ) $base $dot ) | safeURL -}}">
+                  <div class="nav-menu-item-children">
+                    {{ .Name | safeHTML }}
+                  </div>
+                </a>
+              </li>
+              {{ end }}
+            {{ end }}
+          {{ else if eq .Identifier "product" }}
+            {{ range .Children }}
+            <li>
+              <a href="{{- partial "menulink" (slice .Identifier ( .URL ) $base $dot ) | safeURL -}}">
+                <div class="nav-menu-item-children">
+                  {{ .Pre }} <span class="menu-text d-inline-flex">{{ .Name | safeHTML }}</span>
+                </div>
+              </a>
+            </li>
+            {{ end }}
+          {{ else }}
+            {{ range .Children }}
+            <li>
+              <a href="{{- partial "menulink" (slice .Identifier ( .URL ) $base $dot ) | safeURL -}}">
+                <div class="nav-menu-item-children">
+                  {{ .Name | safeHTML }}
+                </div>
+              </a>
+            </li>
+            {{ end }}
+          {{ end }}
+        </ul>
+      </li>
+    {{ else }}
+      <li>
+        <a href="{{- partial "menulink" (slice .Identifier ( .URL ) $base $dot ) | safeURL -}}" class="text-uppercase font-weight-semibold">
+          <div class="nav-menu-item ml-2">
+            {{ .Name | safeHTML }}
+          </div>
+        </a>
+      </li>
+    {{ end }}
+  {{end}}
+  {{ range .Site.Menus.main_right }}
+  {{ if .HasChildren }}
+      <li class="dropdown">
+        <a href="#" class="dropdown-toggle text-uppercase font-weight-semibold" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="true">
+        <div class="ml-2 nav-menu-item">
+          {{.Name}}
+            <span class="caret">
+              <svg viewBox="0 0 17.78 10.51" width="10px">
+                <polyline class="dropdown-arrow" points="16.92 1.14 8.92 9.14 0.92 1.14"/>
+              </svg>
+            </span>
+          </div>
+        </a>
+        <ul class="dropdown-menu">
+          {{ range .Children }}
+          <li>
+            <a href="{{- partial "menulink" (slice .Identifier ( .URL ) $base $dot ) | safeURL -}}">
+              <div class="nav-menu-item-children">
+                {{ .Name | safeHTML }}
+              </div>
+            </a>
+          </li>
+          {{end}}
+        </ul>
+      </li>
+    {{ else }}
+      <li class="final">
+        {{ if (eq .Identifier "docs") }}
+          <a href="{{- partial "menulink" (slice .Identifier ( .URL ) $base $dot ) | safeURL -}}" class="text-uppercase font-weight-semibold" aria-label="{{ .Name | safeHTML }} link">
+              <div class="ml-2 nav-menu-item">
+                  {{ .Name | safeHTML }}
+              </div>
+          </a>
+        {{ else if (eq .Identifier "login") }}
+            <a href="{{- partial "menulink" (slice .Identifier ( .URL ) $base $dot ) | safeURL -}}" class="text-uppercase font-weight-semibold" aria-label="{{ .Name | safeHTML }} link">
+                <div class="ml-2 nav-menu-item">
+                    {{ .Name | safeHTML }}
+                </div>
+            </a>
+        {{ else if $.Params.header_email_signup }}
+          <a href="{{- partial "menulink" (slice .Identifier ( .URL ) $base $dot ) | safeURL -}}" class="text-uppercase font-weight-semibold btn btn-default btn-info btn-outline outline knockout-around sign-up {{ $.Params.header_nav_cta_trigger_overide }}" data-event-category="Signup" data-event-action="Step 1 Top Right Initiated" data-event-label="{{ "{{url path}}" }}" aria-label="{{ .Name | safeHTML }} link">
+              <div class="ml-2 nav-menu-item">
+                  {{ .Name | safeHTML }}
+              </div>
+          </a>
+        {{ else if (eq .Identifier "get_started") }}
+          <a href="{{- partial "menulink" (slice .Identifier .URL $base $dot ) | safeURL -}}" class="text-uppercase font-weight-semibold btn btn-default btn-info btn-outline outline knockout-around sign-up sign-up sign-up-trigger" data-event-category="Signup" data-event-action="Step 1 Top Right Initiated" data-event-label="{{ "{{url path}}" }}" aria-label="{{ .Name | safeHTML }} link">
+              <div class="ml-2 nav-menu-item">
+                  {{ .Name | safeHTML }}
+              </div>
+          </a>
+        {{ end }}
+      </li>
+    {{end}}
+  {{end}}
+</ul>

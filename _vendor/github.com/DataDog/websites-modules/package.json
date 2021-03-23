@@ -1,0 +1,25 @@
+{
+  "name": "websites-modules",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/DataDog/websites-modules.git",
+  "license": "MIT",
+  "scripts": {},
+  "dependencies": {
+    "bootstrap": "^4.5.2",
+    "jquery": "^3.5.1",
+    "popper.js": "^1.16.1",
+    "stickyfilljs": "^2.1.0"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.12.10",
+    "@babel/core": "^7.12.10",
+    "@babel/preset-env": "^7.12.11",
+    "babel-loader": "^8.1.0",
+    "prettier": "^2.1.2",
+    "stylelint": "^13.7.2",
+    "stylelint-config-prettier": "^8.0.2",
+    "stylelint-config-recommended": "^3.0.0",
+    "stylelint-prettier": "^1.1.2"
+  }
+}

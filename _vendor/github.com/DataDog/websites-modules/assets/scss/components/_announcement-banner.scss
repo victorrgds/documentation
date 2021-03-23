@@ -1,0 +1,40 @@
+.announcement {
+  body {
+    margin-top: 30px; 
+  }
+
+  .announcement-banner {
+    display: block;
+    height: 30px;
+    line-height: 30px;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background: $brand-primary;
+    color: red;
+    z-index: 1080;
+    @include gradient($brand-primary, $speaker-2, 1);
+  
+      .banner-title-mobile,
+      .banner-title-desktop {
+        margin-top: -2px;
+      }
+      
+      a {
+        font-size: 20px;
+        color: red;
+  
+        &:lang(ja),
+        &:lang(ko) {
+            font-size: 16px;
+        }
+      }
+  }
+
+  .summit,
+  .event {
+    .announcement-banner {
+      height: auto;
+    }
+  }
+}

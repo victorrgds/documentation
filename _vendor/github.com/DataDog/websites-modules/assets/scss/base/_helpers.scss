@@ -1,0 +1,4 @@
+.shadow-card-nohover {
+    border: none !important;
+    @include shadow-tile($shadow-tile-default, $shadow-tile-default, $tile-radius-default);
+}
