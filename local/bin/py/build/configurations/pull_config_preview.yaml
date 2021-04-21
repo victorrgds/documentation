@@ -320,6 +320,7 @@
     contents:
     - action: pull-and-push-file
       branch: master
+      sha: 473c1776
       globs:
       - 'docs/rum_collection.md'
       options:
@@ -483,7 +484,7 @@
         - "security-monitoring/*.json"
         - "security-monitoring/*.md"
       options:
-        dest_path: '/security_monitoring/default_rules/'
+        dest_path: '/security_platform/default_rules/'
     - action: compliance-rules
       branch: main
       globs:
@@ -496,4 +497,4 @@
         - "runtime/**/*.yml"
         - "runtime/**/*.md"
       options:
-        dest_path: '/security_monitoring/default_rules/'
+        dest_path: '/security_platform/default_rules/'

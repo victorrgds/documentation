@@ -950,6 +950,11 @@
                           "description": "URL of the user's icon.",
                           "type": "string"
                         },
+                        "modified_at": {
+                          "description": "Time that the user was last modified.",
+                          "format": "date-time",
+                          "type": "string"
+                        },
                         "name": {
                           "description": "Name of the user.",
                           "type": "string"
@@ -1181,6 +1186,11 @@
                   },
                   "icon": {
                     "description": "URL of the user's icon.",
+                    "type": "string"
+                  },
+                  "modified_at": {
+                    "description": "Time that the user was last modified.",
+                    "format": "date-time",
                     "type": "string"
                   },
                   "name": {
@@ -1656,6 +1666,11 @@
                         },
                         "icon": {
                           "description": "URL of the user's icon.",
+                          "type": "string"
+                        },
+                        "modified_at": {
+                          "description": "Time that the user was last modified.",
+                          "format": "date-time",
                           "type": "string"
                         },
                         "name": {
@@ -2164,6 +2179,11 @@
                           "description": "URL of the user's icon.",
                           "type": "string"
                         },
+                        "modified_at": {
+                          "description": "Time that the user was last modified.",
+                          "format": "date-time",
+                          "type": "string"
+                        },
                         "name": {
                           "description": "Name of the user.",
                           "type": "string"
@@ -2486,6 +2506,11 @@
                   },
                   "icon": {
                     "description": "URL of the user's icon.",
+                    "type": "string"
+                  },
+                  "modified_at": {
+                    "description": "Time that the user was last modified.",
+                    "format": "date-time",
                     "type": "string"
                   },
                   "name": {
@@ -2957,6 +2982,7 @@
                     "integration_timeboard",
                     "host_timeboard"
                   ],
+                  "example": "host_timeboard",
                   "type": "string",
                   "x-enum-varnames": [
                     "CUSTOM_TIMEBOARD",
@@ -3001,6 +3027,7 @@
                     "integration_timeboard",
                     "host_timeboard"
                   ],
+                  "example": "host_timeboard",
                   "type": "string",
                   "x-enum-varnames": [
                     "CUSTOM_TIMEBOARD",
@@ -3044,6 +3071,7 @@
                     "integration_timeboard",
                     "host_timeboard"
                   ],
+                  "example": "host_timeboard",
                   "type": "string",
                   "x-enum-varnames": [
                     "CUSTOM_TIMEBOARD",
@@ -3088,6 +3116,7 @@
                     "integration_timeboard",
                     "host_timeboard"
                   ],
+                  "example": "host_timeboard",
                   "type": "string",
                   "x-enum-varnames": [
                     "CUSTOM_TIMEBOARD",
@@ -3188,6 +3217,7 @@
               "integration_timeboard",
               "host_timeboard"
             ],
+            "example": "host_timeboard",
             "type": "string",
             "x-enum-varnames": [
               "CUSTOM_TIMEBOARD",
@@ -3226,6 +3256,7 @@
               "integration_timeboard",
               "host_timeboard"
             ],
+            "example": "host_timeboard",
             "type": "string",
             "x-enum-varnames": [
               "CUSTOM_TIMEBOARD",
@@ -3260,6 +3291,7 @@
               "integration_timeboard",
               "host_timeboard"
             ],
+            "example": "host_timeboard",
             "type": "string",
             "x-enum-varnames": [
               "CUSTOM_TIMEBOARD",
@@ -3361,6 +3393,7 @@
                     "integration_timeboard",
                     "host_timeboard"
                   ],
+                  "example": "host_timeboard",
                   "type": "string",
                   "x-enum-varnames": [
                     "CUSTOM_TIMEBOARD",
@@ -3418,6 +3451,7 @@
                     "integration_timeboard",
                     "host_timeboard"
                   ],
+                  "example": "host_timeboard",
                   "type": "string",
                   "x-enum-varnames": [
                     "CUSTOM_TIMEBOARD",
@@ -3462,6 +3496,7 @@
                     "integration_timeboard",
                     "host_timeboard"
                   ],
+                  "example": "host_timeboard",
                   "type": "string",
                   "x-enum-varnames": [
                     "CUSTOM_TIMEBOARD",
@@ -3492,6 +3527,7 @@
           "integration_timeboard",
           "host_timeboard"
         ],
+        "example": "host_timeboard",
         "type": "string",
         "x-enum-varnames": [
           "CUSTOM_TIMEBOARD",
@@ -5144,6 +5180,11 @@
                           "description": "URL of the user's icon.",
                           "type": "string"
                         },
+                        "modified_at": {
+                          "description": "Time that the user was last modified.",
+                          "format": "date-time",
+                          "type": "string"
+                        },
                         "name": {
                           "description": "Name of the user.",
                           "type": "string"
@@ -6018,6 +6059,11 @@
                     "description": "URL of the user's icon.",
                     "type": "string"
                   },
+                  "modified_at": {
+                    "description": "Time that the user was last modified.",
+                    "format": "date-time",
+                    "type": "string"
+                  },
                   "name": {
                     "description": "Name of the user.",
                     "type": "string"
@@ -6723,6 +6769,11 @@
                     "description": "URL of the user's icon.",
                     "type": "string"
                   },
+                  "modified_at": {
+                    "description": "Time that the user was last modified.",
+                    "format": "date-time",
+                    "type": "string"
+                  },
                   "name": {
                     "description": "Name of the user.",
                     "type": "string"
@@ -7162,6 +7213,11 @@
                         },
                         "icon": {
                           "description": "URL of the user's icon.",
+                          "type": "string"
+                        },
+                        "modified_at": {
+                          "description": "Time that the user was last modified.",
+                          "format": "date-time",
                           "type": "string"
                         },
                         "name": {
@@ -7664,7 +7720,6 @@
           }
         },
         "required": [
-          "id",
           "type"
         ],
         "type": "object"
@@ -7787,7 +7842,6 @@
               }
             },
             "required": [
-              "id",
               "type"
             ],
             "type": "object"
@@ -7970,6 +8024,11 @@
                         },
                         "icon": {
                           "description": "URL of the user's icon.",
+                          "type": "string"
+                        },
+                        "modified_at": {
+                          "description": "Time that the user was last modified.",
+                          "format": "date-time",
                           "type": "string"
                         },
                         "name": {
@@ -8491,6 +8550,11 @@
                     "description": "URL of the user's icon.",
                     "type": "string"
                   },
+                  "modified_at": {
+                    "description": "Time that the user was last modified.",
+                    "format": "date-time",
+                    "type": "string"
+                  },
                   "name": {
                     "description": "Name of the user.",
                     "type": "string"
@@ -8926,6 +8990,11 @@
                         },
                         "icon": {
                           "description": "URL of the user's icon.",
+                          "type": "string"
+                        },
+                        "modified_at": {
+                          "description": "Time that the user was last modified.",
+                          "format": "date-time",
                           "type": "string"
                         },
                         "name": {
@@ -9424,7 +9493,6 @@
           }
         },
         "required": [
-          "id",
           "type"
         ],
         "type": "object"
@@ -9547,7 +9615,6 @@
               }
             },
             "required": [
-              "id",
               "type"
             ],
             "type": "object"
@@ -9729,6 +9796,11 @@
                         },
                         "icon": {
                           "description": "URL of the user's icon.",
+                          "type": "string"
+                        },
+                        "modified_at": {
+                          "description": "Time that the user was last modified.",
+                          "format": "date-time",
                           "type": "string"
                         },
                         "name": {
@@ -11835,6 +11907,11 @@
                           "description": "URL of the user's icon.",
                           "type": "string"
                         },
+                        "modified_at": {
+                          "description": "Time that the user was last modified.",
+                          "format": "date-time",
+                          "type": "string"
+                        },
                         "name": {
                           "description": "Name of the user.",
                           "type": "string"
@@ -12199,6 +12276,11 @@
                         },
                         "icon": {
                           "description": "URL of the user's icon.",
+                          "type": "string"
+                        },
+                        "modified_at": {
+                          "description": "Time that the user was last modified.",
+                          "format": "date-time",
                           "type": "string"
                         },
                         "name": {
@@ -22260,6 +22342,21 @@
                   "items": {
                     "description": "Query for matching rule.",
                     "properties": {
+                      "agentRule": {
+                        "description": "The Agent rule.",
+                        "properties": {
+                          "agentRuleId": {
+                            "description": "The Agent rule ID. Must be unique within the rule.",
+                            "example": "etc_shadow",
+                            "type": "string"
+                          },
+                          "expression": {
+                            "description": "A Runtime Security expression determines what activity should be collected by the Datadog Agent.\nThese logical expressions can use predefined operators and attributes. Tags cannot be used in Runtime\nSecurity expressions. Instead, allow or deny based on tags under the advanced option.",
+                            "type": "string"
+                          }
+                        },
+                        "type": "object"
+                      },
                       "aggregation": {
                         "description": "The aggregation type.",
                         "enum": [
@@ -22681,6 +22778,21 @@
             "items": {
               "description": "Query for matching rule.",
               "properties": {
+                "agentRule": {
+                  "description": "The Agent rule.",
+                  "properties": {
+                    "agentRuleId": {
+                      "description": "The Agent rule ID. Must be unique within the rule.",
+                      "example": "etc_shadow",
+                      "type": "string"
+                    },
+                    "expression": {
+                      "description": "A Runtime Security expression determines what activity should be collected by the Datadog Agent.\nThese logical expressions can use predefined operators and attributes. Tags cannot be used in Runtime\nSecurity expressions. Instead, allow or deny based on tags under the advanced option.",
+                      "type": "string"
+                    }
+                  },
+                  "type": "object"
+                },
                 "aggregation": {
                   "description": "The aggregation type.",
                   "enum": [
@@ -23086,6 +23198,21 @@
       "SecurityMonitoringRuleQuery": {
         "description": "Query for matching rule.",
         "properties": {
+          "agentRule": {
+            "description": "The Agent rule.",
+            "properties": {
+              "agentRuleId": {
+                "description": "The Agent rule ID. Must be unique within the rule.",
+                "example": "etc_shadow",
+                "type": "string"
+              },
+              "expression": {
+                "description": "A Runtime Security expression determines what activity should be collected by the Datadog Agent.\nThese logical expressions can use predefined operators and attributes. Tags cannot be used in Runtime\nSecurity expressions. Instead, allow or deny based on tags under the advanced option.",
+                "type": "string"
+              }
+            },
+            "type": "object"
+          },
           "aggregation": {
             "description": "The aggregation type.",
             "enum": [
@@ -23156,6 +23283,21 @@
       "SecurityMonitoringRuleQueryCreate": {
         "description": "Query for matching rule.",
         "properties": {
+          "agentRule": {
+            "description": "The Agent rule.",
+            "properties": {
+              "agentRuleId": {
+                "description": "The Agent rule ID. Must be unique within the rule.",
+                "example": "etc_shadow",
+                "type": "string"
+              },
+              "expression": {
+                "description": "A Runtime Security expression determines what activity should be collected by the Datadog Agent.\nThese logical expressions can use predefined operators and attributes. Tags cannot be used in Runtime\nSecurity expressions. Instead, allow or deny based on tags under the advanced option.",
+                "type": "string"
+              }
+            },
+            "type": "object"
+          },
           "aggregation": {
             "description": "The aggregation type.",
             "enum": [
@@ -23468,6 +23610,21 @@
             "items": {
               "description": "Query for matching rule.",
               "properties": {
+                "agentRule": {
+                  "description": "The Agent rule.",
+                  "properties": {
+                    "agentRuleId": {
+                      "description": "The Agent rule ID. Must be unique within the rule.",
+                      "example": "etc_shadow",
+                      "type": "string"
+                    },
+                    "expression": {
+                      "description": "A Runtime Security expression determines what activity should be collected by the Datadog Agent.\nThese logical expressions can use predefined operators and attributes. Tags cannot be used in Runtime\nSecurity expressions. Instead, allow or deny based on tags under the advanced option.",
+                      "type": "string"
+                    }
+                  },
+                  "type": "object"
+                },
                 "aggregation": {
                   "description": "The aggregation type.",
                   "enum": [
@@ -23789,6 +23946,21 @@
             "items": {
               "description": "Query for matching rule.",
               "properties": {
+                "agentRule": {
+                  "description": "The Agent rule.",
+                  "properties": {
+                    "agentRuleId": {
+                      "description": "The Agent rule ID. Must be unique within the rule.",
+                      "example": "etc_shadow",
+                      "type": "string"
+                    },
+                    "expression": {
+                      "description": "A Runtime Security expression determines what activity should be collected by the Datadog Agent.\nThese logical expressions can use predefined operators and attributes. Tags cannot be used in Runtime\nSecurity expressions. Instead, allow or deny based on tags under the advanced option.",
+                      "type": "string"
+                    }
+                  },
+                  "type": "object"
+                },
                 "aggregation": {
                   "description": "The aggregation type.",
                   "enum": [
@@ -23847,6 +24019,21 @@
               "type": "string"
             },
             "type": "array"
+          }
+        },
+        "type": "object"
+      },
+      "SecurityMonitoringRuntimeAgentRule": {
+        "description": "The Agent rule.",
+        "properties": {
+          "agentRuleId": {
+            "description": "The Agent rule ID. Must be unique within the rule.",
+            "example": "etc_shadow",
+            "type": "string"
+          },
+          "expression": {
+            "description": "A Runtime Security expression determines what activity should be collected by the Datadog Agent.\nThese logical expressions can use predefined operators and attributes. Tags cannot be used in Runtime\nSecurity expressions. Instead, allow or deny based on tags under the advanced option.",
+            "type": "string"
           }
         },
         "type": "object"
@@ -24136,6 +24323,11 @@
                 "description": "URL of the user's icon.",
                 "type": "string"
               },
+              "modified_at": {
+                "description": "Time that the user was last modified.",
+                "format": "date-time",
+                "type": "string"
+              },
               "name": {
                 "description": "Name of the user.",
                 "type": "string"
@@ -24353,6 +24545,11 @@
           },
           "icon": {
             "description": "URL of the user's icon.",
+            "type": "string"
+          },
+          "modified_at": {
+            "description": "Time that the user was last modified.",
+            "format": "date-time",
             "type": "string"
           },
           "name": {
@@ -25021,6 +25218,11 @@
                   },
                   "icon": {
                     "description": "URL of the user's icon.",
+                    "type": "string"
+                  },
+                  "modified_at": {
+                    "description": "Time that the user was last modified.",
+                    "format": "date-time",
                     "type": "string"
                   },
                   "name": {
@@ -25977,6 +26179,11 @@
                       "description": "URL of the user's icon.",
                       "type": "string"
                     },
+                    "modified_at": {
+                      "description": "Time that the user was last modified.",
+                      "format": "date-time",
+                      "type": "string"
+                    },
                     "name": {
                       "description": "Name of the user.",
                       "type": "string"
@@ -26445,14 +26652,14 @@
         "in": "header",
         "name": "DD-API-KEY",
         "type": "apiKey",
-        "x-env-name": "DD_CLIENT_API_KEY"
+        "x-env-name": "DD_API_KEY"
       },
       "appKeyAuth": {
         "description": "Your Datadog APP Key.",
         "in": "header",
         "name": "DD-APPLICATION-KEY",
         "type": "apiKey",
-        "x-env-name": "DD_CLIENT_APP_KEY"
+        "x-env-name": "DD_APP_KEY"
       }
     }
   },
@@ -26758,6 +26965,11 @@
                                   },
                                   "icon": {
                                     "description": "URL of the user's icon.",
+                                    "type": "string"
+                                  },
+                                  "modified_at": {
+                                    "description": "Time that the user was last modified.",
+                                    "format": "date-time",
                                     "type": "string"
                                   },
                                   "name": {
@@ -27254,6 +27466,11 @@
                                   },
                                   "icon": {
                                     "description": "URL of the user's icon.",
+                                    "type": "string"
+                                  },
+                                  "modified_at": {
+                                    "description": "Time that the user was last modified.",
+                                    "format": "date-time",
                                     "type": "string"
                                   },
                                   "name": {
@@ -27819,6 +28036,11 @@
                                     "description": "URL of the user's icon.",
                                     "type": "string"
                                   },
+                                  "modified_at": {
+                                    "description": "Time that the user was last modified.",
+                                    "format": "date-time",
+                                    "type": "string"
+                                  },
                                   "name": {
                                     "description": "Name of the user.",
                                     "type": "string"
@@ -28332,6 +28554,11 @@
                                     "description": "URL of the user's icon.",
                                     "type": "string"
                                   },
+                                  "modified_at": {
+                                    "description": "Time that the user was last modified.",
+                                    "format": "date-time",
+                                    "type": "string"
+                                  },
                                   "name": {
                                     "description": "Name of the user.",
                                     "type": "string"
@@ -28839,6 +29066,11 @@
                                   },
                                   "icon": {
                                     "description": "URL of the user's icon.",
+                                    "type": "string"
+                                  },
+                                  "modified_at": {
+                                    "description": "Time that the user was last modified.",
+                                    "format": "date-time",
                                     "type": "string"
                                   },
                                   "name": {
@@ -29508,6 +29740,11 @@
                                     "description": "URL of the user's icon.",
                                     "type": "string"
                                   },
+                                  "modified_at": {
+                                    "description": "Time that the user was last modified.",
+                                    "format": "date-time",
+                                    "type": "string"
+                                  },
                                   "name": {
                                     "description": "Name of the user.",
                                     "type": "string"
@@ -30108,6 +30345,11 @@
                                     "description": "URL of the user's icon.",
                                     "type": "string"
                                   },
+                                  "modified_at": {
+                                    "description": "Time that the user was last modified.",
+                                    "format": "date-time",
+                                    "type": "string"
+                                  },
                                   "name": {
                                     "description": "Name of the user.",
                                     "type": "string"
@@ -30676,6 +30918,11 @@
                                   },
                                   "icon": {
                                     "description": "URL of the user's icon.",
+                                    "type": "string"
+                                  },
+                                  "modified_at": {
+                                    "description": "Time that the user was last modified.",
+                                    "format": "date-time",
                                     "type": "string"
                                   },
                                   "name": {
@@ -31280,6 +31527,11 @@
                                     "description": "URL of the user's icon.",
                                     "type": "string"
                                   },
+                                  "modified_at": {
+                                    "description": "Time that the user was last modified.",
+                                    "format": "date-time",
+                                    "type": "string"
+                                  },
                                   "name": {
                                     "description": "Name of the user.",
                                     "type": "string"
@@ -31842,6 +32094,11 @@
                                     "description": "URL of the user's icon.",
                                     "type": "string"
                                   },
+                                  "modified_at": {
+                                    "description": "Time that the user was last modified.",
+                                    "format": "date-time",
+                                    "type": "string"
+                                  },
                                   "name": {
                                     "description": "Name of the user.",
                                     "type": "string"
@@ -32267,6 +32524,7 @@
                             "integration_timeboard",
                             "host_timeboard"
                           ],
+                          "example": "host_timeboard",
                           "type": "string",
                           "x-enum-varnames": [
                             "CUSTOM_TIMEBOARD",
@@ -32320,6 +32578,7 @@
                               "integration_timeboard",
                               "host_timeboard"
                             ],
+                            "example": "host_timeboard",
                             "type": "string",
                             "x-enum-varnames": [
                               "CUSTOM_TIMEBOARD",
@@ -32534,6 +32793,7 @@
                               "integration_timeboard",
                               "host_timeboard"
                             ],
+                            "example": "host_timeboard",
                             "type": "string",
                             "x-enum-varnames": [
                               "CUSTOM_TIMEBOARD",
@@ -32672,6 +32932,7 @@
                             "integration_timeboard",
                             "host_timeboard"
                           ],
+                          "example": "host_timeboard",
                           "type": "string",
                           "x-enum-varnames": [
                             "CUSTOM_TIMEBOARD",
@@ -32725,6 +32986,7 @@
                               "integration_timeboard",
                               "host_timeboard"
                             ],
+                            "example": "host_timeboard",
                             "type": "string",
                             "x-enum-varnames": [
                               "CUSTOM_TIMEBOARD",
@@ -32875,6 +33137,7 @@
                             "integration_timeboard",
                             "host_timeboard"
                           ],
+                          "example": "host_timeboard",
                           "type": "string",
                           "x-enum-varnames": [
                             "CUSTOM_TIMEBOARD",
@@ -32928,6 +33191,7 @@
                               "integration_timeboard",
                               "host_timeboard"
                             ],
+                            "example": "host_timeboard",
                             "type": "string",
                             "x-enum-varnames": [
                               "CUSTOM_TIMEBOARD",
@@ -33699,6 +33963,11 @@
                                   },
                                   "icon": {
                                     "description": "URL of the user's icon.",
+                                    "type": "string"
+                                  },
+                                  "modified_at": {
+                                    "description": "Time that the user was last modified.",
+                                    "format": "date-time",
                                     "type": "string"
                                   },
                                   "name": {
@@ -34784,6 +35053,11 @@
                                     "description": "URL of the user's icon.",
                                     "type": "string"
                                   },
+                                  "modified_at": {
+                                    "description": "Time that the user was last modified.",
+                                    "format": "date-time",
+                                    "type": "string"
+                                  },
                                   "name": {
                                     "description": "Name of the user.",
                                     "type": "string"
@@ -35770,6 +36044,11 @@
                                   },
                                   "icon": {
                                     "description": "URL of the user's icon.",
+                                    "type": "string"
+                                  },
+                                  "modified_at": {
+                                    "description": "Time that the user was last modified.",
+                                    "format": "date-time",
                                     "type": "string"
                                   },
                                   "name": {
@@ -36994,6 +37273,11 @@
                                   },
                                   "icon": {
                                     "description": "URL of the user's icon.",
+                                    "type": "string"
+                                  },
+                                  "modified_at": {
+                                    "description": "Time that the user was last modified.",
+                                    "format": "date-time",
                                     "type": "string"
                                   },
                                   "name": {
@@ -44021,6 +44305,27 @@
             "schema": {
               "type": "boolean"
             }
+          },
+          {
+            "description": "Filter metrics that have been submitted with the given tags. Supports boolean and wildcard expressions.\nCannot be combined with other filters.",
+            "example": "env IN (staging,test) AND service:web",
+            "in": "query",
+            "name": "filter[tags]",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "The number of seconds of look back (from now) to apply to a filter[tag] query.\nDefaults value is 3600 (1 hour), maximum value is 172,800 (2 days).",
+            "example": 3600,
+            "in": "query",
+            "name": "window[seconds]",
+            "required": false,
+            "schema": {
+              "format": "int64",
+              "type": "integer"
+            }
           }
         ],
         "responses": {
@@ -45399,7 +45704,7 @@
     },
     "/api/v2/metrics/{metric_name}/volumes": {
       "get": {
-        "description": "View distinct metrics volumes for the given metric name.\n\nCustom distribution metrics will return both ingested and indexed custom metric volumes.\nFor Metrics without Limits beta customers, all metrics will return both ingested/indexed volumes.\nCustom metrics generated in-app from other products will return `null` for ingested volumes.",
+        "description": "View distinct metrics volumes for the given metric name.\n\nCustom distribution metrics will return both ingested and indexed custom metric volumes.\nFor Metrics without Limits&trade; beta customers, all metrics will return both ingested/indexed volumes.\nCustom metrics generated in-app from other products will return `null` for ingested volumes.",
         "operationId": "ListVolumesByMetricName",
         "parameters": [
           {
@@ -47795,6 +48100,11 @@
                                 "description": "URL of the user's icon.",
                                 "type": "string"
                               },
+                              "modified_at": {
+                                "description": "Time that the user was last modified.",
+                                "format": "date-time",
+                                "type": "string"
+                              },
                               "name": {
                                 "description": "Name of the user.",
                                 "type": "string"
@@ -48424,6 +48734,11 @@
                                 "description": "URL of the user's icon.",
                                 "type": "string"
                               },
+                              "modified_at": {
+                                "description": "Time that the user was last modified.",
+                                "format": "date-time",
+                                "type": "string"
+                              },
                               "name": {
                                 "description": "Name of the user.",
                                 "type": "string"
@@ -49027,6 +49342,11 @@
                               },
                               "icon": {
                                 "description": "URL of the user's icon.",
+                                "type": "string"
+                              },
+                              "modified_at": {
+                                "description": "Time that the user was last modified.",
+                                "format": "date-time",
                                 "type": "string"
                               },
                               "name": {
@@ -49879,6 +50199,21 @@
                             "items": {
                               "description": "Query for matching rule.",
                               "properties": {
+                                "agentRule": {
+                                  "description": "The Agent rule.",
+                                  "properties": {
+                                    "agentRuleId": {
+                                      "description": "The Agent rule ID. Must be unique within the rule.",
+                                      "example": "etc_shadow",
+                                      "type": "string"
+                                    },
+                                    "expression": {
+                                      "description": "A Runtime Security expression determines what activity should be collected by the Datadog Agent.\nThese logical expressions can use predefined operators and attributes. Tags cannot be used in Runtime\nSecurity expressions. Instead, allow or deny based on tags under the advanced option.",
+                                      "type": "string"
+                                    }
+                                  },
+                                  "type": "object"
+                                },
                                 "aggregation": {
                                   "description": "The aggregation type.",
                                   "enum": [
@@ -50261,6 +50596,21 @@
                     "items": {
                       "description": "Query for matching rule.",
                       "properties": {
+                        "agentRule": {
+                          "description": "The Agent rule.",
+                          "properties": {
+                            "agentRuleId": {
+                              "description": "The Agent rule ID. Must be unique within the rule.",
+                              "example": "etc_shadow",
+                              "type": "string"
+                            },
+                            "expression": {
+                              "description": "A Runtime Security expression determines what activity should be collected by the Datadog Agent.\nThese logical expressions can use predefined operators and attributes. Tags cannot be used in Runtime\nSecurity expressions. Instead, allow or deny based on tags under the advanced option.",
+                              "type": "string"
+                            }
+                          },
+                          "type": "object"
+                        },
                         "aggregation": {
                           "description": "The aggregation type.",
                           "enum": [
@@ -50606,6 +50956,21 @@
                       "items": {
                         "description": "Query for matching rule.",
                         "properties": {
+                          "agentRule": {
+                            "description": "The Agent rule.",
+                            "properties": {
+                              "agentRuleId": {
+                                "description": "The Agent rule ID. Must be unique within the rule.",
+                                "example": "etc_shadow",
+                                "type": "string"
+                              },
+                              "expression": {
+                                "description": "A Runtime Security expression determines what activity should be collected by the Datadog Agent.\nThese logical expressions can use predefined operators and attributes. Tags cannot be used in Runtime\nSecurity expressions. Instead, allow or deny based on tags under the advanced option.",
+                                "type": "string"
+                              }
+                            },
+                            "type": "object"
+                          },
                           "aggregation": {
                             "description": "The aggregation type.",
                             "enum": [
@@ -50732,12 +51097,23 @@
           "Security Monitoring"
         ],
         "x-codegen-request-body-name": "body",
+        "x-given": {
+          "security_rule": {
+            "parameters": [
+              {
+                "name": "body",
+                "value": "{\n  \"name\": \"{{ unique }}\",\n  \"queries\": [{\n    \"query\": \"@test:true\",\n    \"aggregation\": \"count\",\n    \"groupByFields\": [],\n    \"distinctFields\": [],\n    \"metric\": \"\"\n  }],\n  \"filters\": [],\n  \"cases\": [{\n    \"name\": \"\",\n    \"status\": \"info\",\n    \"condition\": \"a > 0\",\n    \"notifications\": []\n  }],\n  \"options\": {\n    \"evaluationWindow\": 900,\n    \"keepAlive\": 3600,\n    \"maxSignalDuration\": 86400\n  },\n  \"message\": \"Test rule\",\n  \"tags\": [],\n  \"isEnabled\": true\n}"
+              }
+            ],
+            "step": "there is a valid \"security_rule\" in the system"
+          }
+        },
         "x-undo": {
           "operationId": "DeleteSecurityMonitoringRule",
           "parameters": [
             {
               "name": "rule_id",
-              "source": "data.id"
+              "source": "id"
             }
           ],
           "type": "unsafe"
@@ -51099,6 +51475,21 @@
                       "items": {
                         "description": "Query for matching rule.",
                         "properties": {
+                          "agentRule": {
+                            "description": "The Agent rule.",
+                            "properties": {
+                              "agentRuleId": {
+                                "description": "The Agent rule ID. Must be unique within the rule.",
+                                "example": "etc_shadow",
+                                "type": "string"
+                              },
+                              "expression": {
+                                "description": "A Runtime Security expression determines what activity should be collected by the Datadog Agent.\nThese logical expressions can use predefined operators and attributes. Tags cannot be used in Runtime\nSecurity expressions. Instead, allow or deny based on tags under the advanced option.",
+                                "type": "string"
+                              }
+                            },
+                            "type": "object"
+                          },
                           "aggregation": {
                             "description": "The aggregation type.",
                             "enum": [
@@ -51457,6 +51848,21 @@
                     "items": {
                       "description": "Query for matching rule.",
                       "properties": {
+                        "agentRule": {
+                          "description": "The Agent rule.",
+                          "properties": {
+                            "agentRuleId": {
+                              "description": "The Agent rule ID. Must be unique within the rule.",
+                              "example": "etc_shadow",
+                              "type": "string"
+                            },
+                            "expression": {
+                              "description": "A Runtime Security expression determines what activity should be collected by the Datadog Agent.\nThese logical expressions can use predefined operators and attributes. Tags cannot be used in Runtime\nSecurity expressions. Instead, allow or deny based on tags under the advanced option.",
+                              "type": "string"
+                            }
+                          },
+                          "type": "object"
+                        },
                         "aggregation": {
                           "description": "The aggregation type.",
                           "enum": [
@@ -51786,6 +52192,21 @@
                       "items": {
                         "description": "Query for matching rule.",
                         "properties": {
+                          "agentRule": {
+                            "description": "The Agent rule.",
+                            "properties": {
+                              "agentRuleId": {
+                                "description": "The Agent rule ID. Must be unique within the rule.",
+                                "example": "etc_shadow",
+                                "type": "string"
+                              },
+                              "expression": {
+                                "description": "A Runtime Security expression determines what activity should be collected by the Datadog Agent.\nThese logical expressions can use predefined operators and attributes. Tags cannot be used in Runtime\nSecurity expressions. Instead, allow or deny based on tags under the advanced option.",
+                                "type": "string"
+                              }
+                            },
+                            "type": "object"
+                          },
                           "aggregation": {
                             "description": "The aggregation type.",
                             "enum": [
@@ -51965,6 +52386,58 @@
         "x-undo": {
           "type": "idempotent"
         }
+      }
+    },
+    "/api/v2/security_monitoring/runtime/policy/download": {
+      "get": {
+        "description": "The download endpoint generates a Runtime Security policy file from your currently active\nRuntime Security rules, and downloads them as a .policy file. This file can then be deployed to\nyour agents to update the policy running in your environment.",
+        "operationId": "DowloadRuntimePolicyFile",
+        "responses": {
+          "200": {
+            "content": {
+              "application/yaml": {
+                "schema": {
+                  "format": "binary",
+                  "type": "string"
+                }
+              }
+            },
+            "description": "OK"
+          },
+          "403": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "description": "API error response.",
+                  "properties": {
+                    "errors": {
+                      "description": "A list of errors.",
+                      "items": {
+                        "description": "A list of items.",
+                        "example": "Bad Request",
+                        "type": "string"
+                      },
+                      "type": "array"
+                    }
+                  },
+                  "required": [
+                    "errors"
+                  ],
+                  "type": "object"
+                }
+              }
+            },
+            "description": "Not Authorized"
+          }
+        },
+        "summary": "Get the latest Runtime Security policy",
+        "tags": [
+          "Security Monitoring"
+        ],
+        "x-undo": {
+          "type": "safe"
+        },
+        "x-unstable": "**Note**: This endpoint is in public beta.\nIf you have any feedback, contact [Datadog support](https://docs.datadoghq.com/help/)."
       }
     },
     "/api/v2/security_monitoring/signals": {
@@ -52700,6 +53173,11 @@
                                     "description": "URL of the user's icon.",
                                     "type": "string"
                                   },
+                                  "modified_at": {
+                                    "description": "Time that the user was last modified.",
+                                    "format": "date-time",
+                                    "type": "string"
+                                  },
                                   "name": {
                                     "description": "Name of the user.",
                                     "type": "string"
@@ -53352,6 +53830,11 @@
                                   },
                                   "icon": {
                                     "description": "URL of the user's icon.",
+                                    "type": "string"
+                                  },
+                                  "modified_at": {
+                                    "description": "Time that the user was last modified.",
+                                    "format": "date-time",
                                     "type": "string"
                                   },
                                   "name": {
@@ -54022,6 +54505,11 @@
                                     "description": "URL of the user's icon.",
                                     "type": "string"
                                   },
+                                  "modified_at": {
+                                    "description": "Time that the user was last modified.",
+                                    "format": "date-time",
+                                    "type": "string"
+                                  },
                                   "name": {
                                     "description": "Name of the user.",
                                     "type": "string"
@@ -54478,7 +54966,6 @@
                       }
                     },
                     "required": [
-                      "id",
                       "type"
                     ],
                     "type": "object"
@@ -54660,6 +55147,11 @@
                                   },
                                   "icon": {
                                     "description": "URL of the user's icon.",
+                                    "type": "string"
+                                  },
+                                  "modified_at": {
+                                    "description": "Time that the user was last modified.",
+                                    "format": "date-time",
                                     "type": "string"
                                   },
                                   "name": {
@@ -55214,6 +55706,11 @@
                                   },
                                   "icon": {
                                     "description": "URL of the user's icon.",
+                                    "type": "string"
+                                  },
+                                  "modified_at": {
+                                    "description": "Time that the user was last modified.",
+                                    "format": "date-time",
                                     "type": "string"
                                   },
                                   "name": {
@@ -55864,6 +56361,11 @@
                                   },
                                   "icon": {
                                     "description": "URL of the user's icon.",
+                                    "type": "string"
+                                  },
+                                  "modified_at": {
+                                    "description": "Time that the user was last modified.",
+                                    "format": "date-time",
                                     "type": "string"
                                   },
                                   "name": {
@@ -56530,6 +57032,11 @@
                                     "description": "URL of the user's icon.",
                                     "type": "string"
                                   },
+                                  "modified_at": {
+                                    "description": "Time that the user was last modified.",
+                                    "format": "date-time",
+                                    "type": "string"
+                                  },
                                   "name": {
                                     "description": "Name of the user.",
                                     "type": "string"
@@ -56986,7 +57493,6 @@
                       }
                     },
                     "required": [
-                      "id",
                       "type"
                     ],
                     "type": "object"
@@ -57164,6 +57670,11 @@
                                   },
                                   "icon": {
                                     "description": "URL of the user's icon.",
+                                    "type": "string"
+                                  },
+                                  "modified_at": {
+                                    "description": "Time that the user was last modified.",
+                                    "format": "date-time",
                                     "type": "string"
                                   },
                                   "name": {
@@ -57965,6 +58476,11 @@
                                 "description": "URL of the user's icon.",
                                 "type": "string"
                               },
+                              "modified_at": {
+                                "description": "Time that the user was last modified.",
+                                "format": "date-time",
+                                "type": "string"
+                              },
                               "name": {
                                 "description": "Name of the user.",
                                 "type": "string"
@@ -58614,6 +59130,11 @@
                               "description": "URL of the user's icon.",
                               "type": "string"
                             },
+                            "modified_at": {
+                              "description": "Time that the user was last modified.",
+                              "format": "date-time",
+                              "type": "string"
+                            },
                             "name": {
                               "description": "Name of the user.",
                               "type": "string"
@@ -59103,7 +59624,7 @@
             "parameters": [
               {
                 "name": "body",
-                "value": "{\n  \"data\": {\n    \"attributes\": {\n      \"email\": \"{{ unique }}@datadoghq.com\"\n     },\n     \"type\": \"users\"\n  }\n}"
+                "value": "{\n  \"data\": {\n    \"attributes\": {\n      \"email\": \"{{ unique }}@datadoghq.com\",\n      \"title\": \"user title\"\n     },\n     \"type\": \"users\"\n  }\n}"
               }
             ],
             "step": "there is a valid \"user\" in the system"
@@ -59246,6 +59767,11 @@
                             },
                             "icon": {
                               "description": "URL of the user's icon.",
+                              "type": "string"
+                            },
+                            "modified_at": {
+                              "description": "Time that the user was last modified.",
+                              "format": "date-time",
                               "type": "string"
                             },
                             "name": {
@@ -59846,6 +60372,11 @@
                               "description": "URL of the user's icon.",
                               "type": "string"
                             },
+                            "modified_at": {
+                              "description": "Time that the user was last modified.",
+                              "format": "date-time",
+                              "type": "string"
+                            },
                             "name": {
                               "description": "Name of the user.",
                               "type": "string"
@@ -60432,6 +60963,11 @@
                             },
                             "icon": {
                               "description": "URL of the user's icon.",
+                              "type": "string"
+                            },
+                            "modified_at": {
+                              "description": "Time that the user was last modified.",
+                              "format": "date-time",
                               "type": "string"
                             },
                             "name": {
@@ -61114,6 +61650,19 @@
         "protocol": {
           "default": "https",
           "description": "The protocol for accessing the API."
+        }
+      }
+    },
+    {
+      "url": "https://{subdomain}.{site}",
+      "variables": {
+        "site": {
+          "default": "datadoghq.com",
+          "description": "Any Datadog deployment."
+        },
+        "subdomain": {
+          "default": "api",
+          "description": "The subdomain where the API is deployed."
         }
       }
     }
