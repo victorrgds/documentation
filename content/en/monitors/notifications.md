@@ -111,7 +111,7 @@ Use template variables to customize your monitor notifications. The built-in var
 
 | Variable                      | Description                                                                  |
 |-------------------------------|------------------------------------------------------------------------------|
-| `{{value}}`                   | The value that breached the alert for metric based query monitors.           |
+| `{{value}}`                   | The value that breached the alert.           |
 | `{{threshold}}`               | The value of the alert threshold set in the monitor's alert conditions.      |
 | `{{warn_threshold}}`          | The value of the warning threshold set in the monitor's alert conditions.    |
 | `{{ok_threshold}}`            | The value that recovered the monitor.                                        |
