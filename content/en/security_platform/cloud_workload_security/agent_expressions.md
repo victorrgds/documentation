@@ -74,19 +74,18 @@ Helpers exist in SECL that enable users to write advanced rules without needing 
 ### Command line arguments
 The *args_flags* and *args_options* are helpers to ease the writing of CWS rules based on command line arguments.
 
-	*args_flags* is used to catch arguments that start by either one
-	or two hyphen characters but do not accept any associated value.
+*args_flags* is used to catch arguments that start by either one or two hyphen characters but do not accept any associated value.
 
-	Examples:
-   * `version` is part of *args_flags* for the command `cat --version`
-   * `l` and `n` both are in *args_flags* for the command `netstat -ln`
+Examples:
+* `version` is part of *args_flags* for the command `cat --version`
+* `l` and `n` both are in *args_flags* for the command `netstat -ln`
 
 	
-	*args_options* is used to catch arguments that start by either one or two hyphen characters and accepts a value either specified as the same argument but separated by the ‘=’ character or specified as the next argument.
+*args_options* is used to catch arguments that start by either one or two hyphen characters and accepts a value either specified as the same argument but separated by the ‘=’ character or specified as the next argument.
 
-	Examples:
-	 * `T=8` and `width=8` both are in *args_options* for the command `ls -T 8 --width=8`
-	 * `exec.args_options ~= [ “s=.*\’” ]` can be used to detect `sudoedit` was launched with `-s` argument and a command that ends with a `\`
+Examples:
+* `T=8` and `width=8` both are in *args_options* for the command `ls -T 8 --width=8`
+* `exec.args_options ~= [ “s=.*\’” ]` can be used to detect `sudoedit` was launched with `-s` argument and a command that ends with a `\`
 
 ### File rights
 
