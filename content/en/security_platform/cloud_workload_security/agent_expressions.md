@@ -15,7 +15,7 @@ further_reading:
 Rules for Cloud Workload Security (CWS) are first evaluated in the datadog-agent, to decide what system activity to collect. This portion of a CWS rule is called the agent expression. Agent expressions use Datadog's Security Language (SECL). The standard format of a SECL expression is as follows:
 
 ```
-<event>.<event-attribute> <operator> <value> <event-attribute> ...
+<trigger>.<event-attribute> <operator> <value> <event-attribute> ...
 ```
 
 Using this format, an example rule will look like:
@@ -23,8 +23,8 @@ Using this format, an example rule will look like:
 open.file.path == "/etc/shadow" && file.path not in ["/usr/sbin/vipw"]
 ```
 
-## Event
-Events correspond to types of activity seen by the system. The currently supported set of event types is:
+## Triggers
+Triggers are events that correspond to types of activity seen by the system. The currently supported set of triggers is:
 
 | SECL Event           | Type             |  Definition                           | Agent Version |
 |----------------------|------------------|---------------------------------------|---------------|
@@ -44,7 +44,7 @@ Events correspond to types of activity seen by the system. The currently support
 | `unmount`            | File             | Unmount a filesystem                  | 7.27          |
 
 ## Attributes
-Attributes can be used to specify exact data/behavior for a rule. Attributes are based on CWS event attributes which can be found LINK here LINK
+Attributes can be used to specify exact data/behavior for a rule. Attributes are based on [CWS event attributes][1]
 
 ## Operators
 SECL operators are used to comibine event attributes together into a full expression. The following operators are available:
@@ -90,3 +90,7 @@ Examples:
 ### File rights
 
 The *file.rights* attribute can now be used in addition to *file.mode*. *file.mode* can hold values set by the kernel, while the *file.rights* only holds the values set by the user. These rights may be more familiar because they are in the `chmod` commands.
+
+{{< /whatsnext >}}
+
+[1]: https://docs.datadoghq.com/security_platform/cloud_workload_security/event_attributes

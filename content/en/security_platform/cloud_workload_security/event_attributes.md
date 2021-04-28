@@ -1,5 +1,5 @@
 ---
-title: Event Attributes
+title: Cloud Workload Security Events
 kind: documentation
 description: "Event format, schema, and attributes for Cloud Workload Security"
 further_reading:
