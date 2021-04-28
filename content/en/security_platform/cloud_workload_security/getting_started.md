@@ -69,6 +69,7 @@ DOCKER_CONTENT_TRUST=1 \
   -v /etc/passwd:/etc/passwd:ro \
   -v /etc/group:/etc/group:ro \
   -v /:/host/root:ro \
+  -v /etc/os-release:/host/etc/os-release \
   -v /sys/kernel/debug:/sys/kernel/debug \
   -e DD_RUNTIME_SECURITY_CONFIG_ENABLED=true \
   -e DD_SYSTEM_PROBE_ENABLED=true \
