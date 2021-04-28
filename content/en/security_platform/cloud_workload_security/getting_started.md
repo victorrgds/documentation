@@ -1,5 +1,5 @@
 ---
-title: Getting Started with Runtime Security
+title: Getting Started with Cloud Workload Security
 kind: documentation
 description: "Follow the setup and installation instructions to get started with Runtime Security."
 further_reading:
@@ -10,14 +10,15 @@ further_reading:
 
 ## Overview
 
-There are two main sets of features you can use for Runtime Security in the Datadog Agent:
+Cloud Workload Security (CWS) provides real-time eBPF-powered threat detection across your hosts and containers. CWS is built directly into the Datadog Agent. Simply activate cloud workload security on your Datadog agents. No additional agents required and no additional complexity for your operations team.
 
+CWS can monitor the following types of activity for suspicious, malicious, or anomalous behavior:
 1. **File Integrity Monitoring** to watch for changes to key files and directories on hosts or containers in real time.
 2. **Process Execution Monitoring** to monitor process executions for malicious activity on hosts or containers in real time.
 
 ## Requirements
 
-* Datadog Agent >= 7.25.0
+* Datadog Agent >= 7.27.0
 * Hosts/containers must be running Linux with kernel versions >= 4.15
   * All major Linux distributions running on those kernels are supported.
   * Custom kernel builds are not supported.
