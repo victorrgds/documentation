@@ -1,6 +1,6 @@
 <!DOCTYPE html>
-<html lang="{{ site.Language.Lang }}" data-type="{{.Type}}" data-relpermalink="{{.RelPermalink}}"
-  data-env="{{site.Params.environment}}" data-commit-ref="{{ site.Params.branch }}" style="opacity:0">
+<html lang="{{ .Site.Language.Lang }}" data-type="{{.Type}}" data-relpermalink="{{.RelPermalink}}"
+  data-env="{{.Site.Params.environment}}" data-commit-ref="{{ .Site.Params.branch }}" style="opacity:0">
 
 <head>
   {{ partial "header-scripts.html" . }}
@@ -25,7 +25,7 @@
 
 <body
 data-spy="scroll" data-target="#navbar-example2" data-offset="5"
-  class="{{ site.Language.Lang }} {{ if .IsPage }} {{ replace $.Type "/" "-" }} {{ else }} {{ .Section }} {{ end }} {{ $bodyClass }}">
+  class="{{ .Site.Language.Lang }} {{ if .IsPage }} {{ replace $.Type "/" "-" }} {{ else }} {{ .Section }} {{ end }} {{ $bodyClass }}">
 
   {{ partial "header/header.html" . }}
 
