@@ -622,3 +622,11 @@
         - "runtime/**/*.md"
       options:
         dest_path: '/security_platform/default_rules/'
+  - repo_name: datadog-agent
+    contents:
+    - action: pull-and-push-file
+      branch: master
+      globs:
+        - "pkg/security/tests/schemas/*.json"
+      options:
+        dest_path: '/security_platform/cloud_workload_security/'
