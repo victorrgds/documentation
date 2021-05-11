@@ -100,7 +100,7 @@
                     "notebooks",
                     "real_user_monitoring",
                     "security",
-                    "security_monitoring",
+                    "security_platform",
                     "synthetics",
                     "tracing",
                     "serverless",
@@ -254,7 +254,8 @@
             ["microsoft azure", "azure"],
             ["gcp", "google cloud platform"],
             ["aws", "amazon web service"],
-            ["RUM", "rum", "real user monitoring"]
+            ["RUM", "rum", "real user monitoring"],
+            ["Role Permissions", "permissions"]
         ]
     },
     "only_content_level": true,
