@@ -1034,10 +1034,10 @@ components:
           type: array
       type: object
     DashboardReflowType:
-      description: 'Reflow type for a multi-size layout dashboard. Set this only when
-        layout type is ''ordered''.
+      description: 'Reflow type for a **new dashboard layout** dashboard. Set this
+        only when layout type is ''ordered''.
 
-        If set to ''fixed'', the dashboard expect all widgets to have a layout, and
+        If set to ''fixed'', the dashboard expects all widgets to have a layout, and
         if it''s set to ''auto'',
 
         widgets should not have layouts.'
@@ -2460,8 +2460,15 @@ components:
         background_color:
           description: Background color of the group title.
           type: string
+        banner_img:
+          description: URL of image to display as a banner for the group.
+          type: string
         layout_type:
           $ref: '#/components/schemas/WidgetLayoutType'
+        show_title:
+          default: true
+          description: Whether to show the title or not.
+          type: boolean
         title:
           description: Title of the widget.
           type: string
@@ -3156,6 +3163,18 @@ components:
         An image can be a PNG, JPG, or animated GIF. Only available on FREE layout
         dashboards.
       properties:
+        has_background:
+          default: true
+          description: Whether to display a background or not.
+          example: true
+          type: boolean
+        has_border:
+          default: true
+          description: Whether to display a border or not.
+          example: true
+          type: boolean
+        horizontal_align:
+          $ref: '#/components/schemas/WidgetHorizontalAlign'
         margin:
           $ref: '#/components/schemas/WidgetMargin'
         sizing:
@@ -3164,8 +3183,14 @@ components:
           $ref: '#/components/schemas/ImageWidgetDefinitionType'
         url:
           description: URL of the image.
-          example: ''
+          example: https://example.com/image.png
           type: string
+        url_dark_theme:
+          description: URL of the image in dark mode.
+          example: https://example.com/image-dark-mode.png
+          type: string
+        vertical_align:
+          $ref: '#/components/schemas/WidgetVerticalAlign'
       required:
       - type
       - url
@@ -3513,6 +3538,51 @@ components:
       type: string
       x-enum-varnames:
       - ATTRIBUTE_REMAPPER
+    LogsByRetention:
+      description: Object containing logs usage data broken down by retention period.
+      properties:
+        orgs:
+          description: Indexed logs usage summary for each organization for each retention
+            period with usage.
+          properties:
+            usage:
+              description: Indexed logs usage summary for each organization.
+              items:
+                $ref: '#/components/schemas/LogsByRetentionOrgUsage'
+              type: array
+          type: object
+        usage:
+          description: Aggregated index logs usage for each retention period with
+            usage.
+          items:
+            $ref: '#/components/schemas/LogsRetentionAggSumUsage'
+          type: array
+        usage_by_month:
+          $ref: '#/components/schemas/LogsByRetentionMonthlyUsage'
+      type: object
+    LogsByRetentionMonthlyUsage:
+      description: Object containing a summary of indexed logs usage by retention
+        period for a single month.
+      properties:
+        date:
+          description: The month for the usage.
+          format: datetime
+          type: string
+        usage:
+          description: Indexed logs usage for each active retention for the month.
+          items:
+            $ref: '#/components/schemas/LogsRetentionSumUsage'
+          type: array
+      type: object
+    LogsByRetentionOrgUsage:
+      description: Indexed logs usage by retention for a single organization.
+      properties:
+        usage:
+          description: Indexed logs usage for each active retention for the organization.
+          items:
+            $ref: '#/components/schemas/LogsRetentionSumUsage'
+          type: array
+      type: object
     LogsCategoryProcessor:
       description: "Use the Category Processor to add a new attribute (without spaces\
         \ or special characters in the new attribute name)\nto a log matching a provided\
@@ -4228,6 +4298,48 @@ components:
           type: integer
       required:
       - aggregation
+      type: object
+    LogsRetentionAggSumUsage:
+      description: Object containing indexed logs usage aggregated across organizations
+        and months for a retention period.
+      properties:
+        logs_indexed_logs_usage_agg_sum:
+          description: Total indexed logs for this retention period.
+          format: int64
+          type: integer
+        logs_live_indexed_logs_usage_agg_sum:
+          description: Live indexed logs for this retention period.
+          format: int64
+          type: integer
+        logs_rehydrated_indexed_logs_usage_agg_sum:
+          description: Rehydrated indexed logs for this retention period.
+          format: int64
+          type: integer
+        retention:
+          description: The retention period in days or "custom" for all custom retention
+            periods.
+          type: string
+      type: object
+    LogsRetentionSumUsage:
+      description: Object containing indexed logs usage grouped by retention period
+        and summed.
+      properties:
+        logs_indexed_logs_usage_sum:
+          description: Total indexed logs for this retention period.
+          format: int64
+          type: integer
+        logs_live_indexed_logs_usage_sum:
+          description: Live indexed logs for this retention period.
+          format: int64
+          type: integer
+        logs_rehydrated_indexed_logs_usage_sum:
+          description: Rehydrated indexed logs for this retention period.
+          format: int64
+          type: integer
+        retention:
+          description: The retention period in days or "custom" for all custom retention
+            periods.
+          type: string
       type: object
     LogsServiceRemapper:
       description: 'Use this processor if you want to assign one or more attributes
@@ -5550,6 +5662,10 @@ components:
         font_size:
           description: Size of the text.
           type: string
+        has_padding:
+          default: true
+          description: Whether to add padding or not.
+          type: boolean
         show_tick:
           description: Whether to show a tick or not.
           type: boolean
@@ -5562,6 +5678,8 @@ components:
           type: string
         type:
           $ref: '#/components/schemas/NoteWidgetDefinitionType'
+        vertical_align:
+          $ref: '#/components/schemas/WidgetVerticalAlign'
       required:
       - type
       - content
@@ -6539,13 +6657,171 @@ components:
             description: The error message.
             type: string
           type: array
+        metadata:
+          description: The metadata object containing additional information about
+            the list of SLOs.
+          properties:
+            page:
+              description: The object containing information about the pages of the
+                list of SLOs.
+              properties:
+                total_count:
+                  description: The total number of resources that could be retrieved
+                    ignoring the parameters and filters in the request.
+                  format: int64
+                  type: integer
+                total_filtered_count:
+                  description: The total number of resources that match the parameters
+                    and filters in the request. This attribute can be used by a client
+                    to determine the total number of pages.
+                  format: int64
+                  type: integer
+              type: object
+          type: object
       type: object
     SLOResponse:
       description: A service level objective response containing a single service
         level objective.
       properties:
         data:
-          $ref: '#/components/schemas/ServiceLevelObjective'
+          description: 'A service level objective object includes a service level
+            indicator, thresholds
+
+            for one or more timeframes, and metadata (`name`, `description`, `tags`,
+            etc.).'
+          properties:
+            configured_alert_ids:
+              description: A list of SLO monitors IDs that reference this SLO. This
+                field is returned only when `with_configured_alert_ids` parameter
+                is true in query.
+              example:
+              - 123
+              - 456
+              - 789
+              items:
+                description: A monitor ID.
+                format: int64
+                type: integer
+              type: array
+            created_at:
+              description: 'Creation timestamp (UNIX time in seconds)
+
+
+                Always included in service level objective responses.'
+              format: int64
+              readOnly: true
+              type: integer
+            creator:
+              $ref: '#/components/schemas/Creator'
+            description:
+              description: 'A user-defined description of the service level objective.
+
+
+                Always included in service level objective responses (but may be `null`).
+
+                Optional in create/update requests.'
+              nullable: true
+              type: string
+            groups:
+              description: 'A list of (up to 20) monitor groups that narrow the scope
+                of a monitor service level objective.
+
+
+                Included in service level objective responses if it is not empty.
+                Optional in
+
+                create/update requests for monitor service level objectives, but may
+                only be
+
+                used when then length of the `monitor_ids` field is one.'
+              example:
+              - env:prod
+              - role:mysql
+              items:
+                description: A group name, for instance `env:prod`.
+                type: string
+              type: array
+            id:
+              description: 'A unique identifier for the service level objective object.
+
+
+                Always included in service level objective responses.'
+              readOnly: true
+              type: string
+            modified_at:
+              description: 'Modification timestamp (UNIX time in seconds)
+
+
+                Always included in service level objective responses.'
+              format: int64
+              readOnly: true
+              type: integer
+            monitor_ids:
+              description: 'A list of monitor ids that defines the scope of a monitor
+                service level
+
+                objective. **Required if type is `monitor`**.'
+              items:
+                description: A monitor ID.
+                format: int64
+                type: integer
+              type: array
+            monitor_tags:
+              description: 'The union of monitor tags for all monitors referenced
+                by the `monitor_ids`
+
+                field.
+
+                Always included in service level objective responses for monitor service
+                level
+
+                objectives (but may be empty). Ignored in create/update requests.
+                Does not
+
+                affect which monitors are included in the service level objective
+                (that is
+
+                determined entirely by the `monitor_ids` field).'
+              items:
+                description: A monitor tag.
+                type: string
+              type: array
+            name:
+              description: The name of the service level objective object.
+              example: Custom Metric SLO
+              type: string
+            query:
+              $ref: '#/components/schemas/ServiceLevelObjectiveQuery'
+            tags:
+              description: 'A list of tags associated with this service level objective.
+
+                Always included in service level objective responses (but may be empty).
+
+                Optional in create/update requests.'
+              example:
+              - env:prod
+              - app:core
+              items:
+                description: A tag to apply to your SLO.
+                type: string
+              type: array
+            thresholds:
+              description: 'The thresholds (timeframes and associated targets) for
+                this service level
+
+                objective object.'
+              example:
+              - target: 95
+                timeframe: 7d
+              - target: 95
+                timeframe: 30d
+                warning: 97
+              items:
+                $ref: '#/components/schemas/SLOThreshold'
+              type: array
+            type:
+              $ref: '#/components/schemas/SLOType'
+          type: object
         errors:
           description: 'An array of error messages. Each endpoint documents how/whether
             this field is
@@ -7763,6 +8039,10 @@ components:
     SyntheticsAPIStep:
       description: The steps used in a Synthetics multistep API test.
       properties:
+        allowFailure:
+          description: Determines whether or not to continue with test if this step
+            fails.
+          type: boolean
         assertions:
           default: []
           description: Array of assertions used for the test.
@@ -7775,6 +8055,12 @@ components:
           items:
             $ref: '#/components/schemas/SyntheticsParsingOptions'
           type: array
+        isCritical:
+          description: 'Determines whether or not to consider the entire test as failed
+            if this step fails.
+
+            Can be used only if `allowFailure` is `true`.'
+          type: boolean
         name:
           description: The name of the step.
           type: string
@@ -8061,6 +8347,10 @@ components:
       - recordSome
       - tlsVersion
       - minTlsVersion
+      - latency
+      - packetLossPercentage
+      - packetsReceived
+      - networkHop
       type: string
       x-enum-varnames:
       - BODY
@@ -8073,6 +8363,10 @@ components:
       - RECORD_SOME
       - TLS_VERSION
       - MIN_TLS_VERSION
+      - LATENCY
+      - PACKET_LOSS_PERCENTAGE
+      - PACKETS_RECEIVED
+      - NETWORK_HOP
     SyntheticsBasicAuth:
       description: Object to handle basic authentication when performing the test.
       properties:
@@ -8177,6 +8471,10 @@ components:
           type: array
         request:
           $ref: '#/components/schemas/SyntheticsTestRequest'
+        setCookie:
+          description: Cookies to be used for the request, using the [Set-Cookie](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Set-Cookie)
+            syntax.
+          type: string
         variables:
           description: Array of variables used for the test steps.
           items:
@@ -9136,7 +9434,6 @@ components:
             $ref: '#/components/schemas/SyntheticsBrowserVariable'
           type: array
       required:
-      - request
       - assertions
       type: object
     SyntheticsTestDetails:
@@ -9186,13 +9483,14 @@ components:
     SyntheticsTestDetailsSubType:
       description: 'The subtype of the Synthetic API test, `http`, `ssl`, `tcp`,
 
-        `dns` or `multi`.'
+        `dns`, `icmp` or `multi`.'
       enum:
       - http
       - ssl
       - tcp
       - dns
       - multi
+      - icmp
       type: string
       x-enum-varnames:
       - HTTP
@@ -9200,6 +9498,7 @@ components:
       - TCP
       - DNS
       - MULTI
+      - ICMP
     SyntheticsTestDetailsType:
       description: Type of the Synthetic test, either `api` or `browser`.
       enum:
@@ -9251,8 +9550,7 @@ components:
             $ref: '#/components/schemas/SyntheticsDeviceID'
           type: array
         disableCors:
-          description: Whether or not to disable CORS mechanism. Currently only available
-            for Chrome.
+          description: Whether or not to disable CORS mechanism.
           type: boolean
         follow_redirects:
           description: For API HTTP test, whether or not the test should follow redirects.
@@ -9348,6 +9646,12 @@ components:
         dnsServer:
           description: DNS server to use for DNS tests.
           type: string
+        dnsServerPort:
+          description: DNS server port to use for DNS tests.
+          format: int32
+          maximum: 65535
+          minimum: 1
+          type: integer
         headers:
           $ref: '#/components/schemas/SyntheticsTestHeaders'
         host:
@@ -9358,6 +9662,12 @@ components:
         noSavingResponseBody:
           description: Determines whether or not to save the response body.
           type: boolean
+        numberOfPackets:
+          description: Number of pings to use per test.
+          format: int32
+          maximum: 10
+          minimum: 0
+          type: integer
         port:
           description: Port to use when performing the test.
           format: int64
@@ -9365,6 +9675,10 @@ components:
         query:
           description: Query to use for the test.
           type: object
+        shouldTrackHops:
+          description: Turns on a traceroute probe to discover all gateways along
+            the path to the host destination.
+          type: boolean
         timeout:
           description: Timeout in seconds for the test.
           format: double
@@ -9397,6 +9711,7 @@ components:
     SyntheticsTickInterval:
       description: The frequency at which to run the Synthetic test (in seconds).
       enum:
+      - 30
       - 60
       - 300
       - 900
@@ -9409,6 +9724,7 @@ components:
       format: int64
       type: integer
       x-enum-varnames:
+      - THIRTY_SECONDS
       - MINUTE
       - FIVE_MINUTES
       - FIFTEEN_MINUTES
@@ -10687,6 +11003,40 @@ components:
             $ref: '#/components/schemas/UsageLogsByIndexHour'
           type: array
       type: object
+    UsageLogsByRetentionHour:
+      description: The number of indexed logs for each hour for a given organization
+        broken down by retention period.
+      properties:
+        indexed_events_count:
+          description: Total logs indexed with this retention period during a given
+            hour.
+          format: int64
+          type: integer
+        live_indexed_events_count:
+          description: Live logs indexed with this retention period during a given
+            hour.
+          format: int64
+          type: integer
+        rehydrated_indexed_events_count:
+          description: Rehydrated logs indexed with this retention period during a
+            given hour.
+          format: int64
+          type: integer
+        retention:
+          description: The retention period in days or "custom" for all custom retention
+            usage.
+          type: string
+      type: object
+    UsageLogsByRetentionResponse:
+      description: Response containing the indexed logs usage broken down by retention
+        period for an organization during a given hour.
+      properties:
+        usage:
+          description: Get hourly usage for indexed logs by retention period.
+          items:
+            $ref: '#/components/schemas/UsageLogsByRetentionHour'
+          type: array
+      type: object
     UsageLogsHour:
       description: Hour usage for logs.
       properties:
@@ -11501,6 +11851,8 @@ components:
             1, 2020).
           format: int64
           type: integer
+        logs_by_retention:
+          $ref: '#/components/schemas/LogsByRetention'
         mobile_rum_session_count_agg_sum:
           description: Shows the sum of all mobile RUM Sessions over all hours in
             the current months for all organizations.
@@ -11974,11 +12326,11 @@ components:
           type: string
       type: object
     Widget:
-      description: 'Information about widget.
-
-
-        Note: The `layout` property is required for widgets in dashboards with `free`
-        `layout_type` only.'
+      description: "Information about widget.\n\n**Note**: The `layout` property is\
+        \ required for widgets in dashboards with `free` `layout_type`.\n      For\
+        \ the **new dashboard layout**, the `layout` property depends on the `reflow_type`\
+        \ of the dashboard.\n      - If `reflow_type` is `fixed`, `layout` is required.\n\
+        \      - If `reflow_type` is `auto`, `layout` should not be set."
       properties:
         definition:
           $ref: '#/components/schemas/WidgetDefinition'
@@ -12243,19 +12595,44 @@ components:
       x-enum-varnames:
       - CHECK
       - CLUSTER
-    WidgetImageSizing:
-      description: How to size the image on the widget.
+    WidgetHorizontalAlign:
+      description: Horizontal alignment.
       enum:
+      - center
+      - left
+      - right
+      type: string
+      x-enum-varnames:
+      - CENTER
+      - LEFT
+      - RIGHT
+    WidgetImageSizing:
+      description: 'How to size the image on the widget. The values are based on the
+        image `object-fit` CSS properties.
+
+        **Note**: `zoom`, `fit` and `center` values are deprecated.'
+      enum:
+      - fill
+      - contain
+      - cover
+      - none
+      - scale-down
       - zoom
       - fit
       - center
       type: string
       x-enum-varnames:
+      - FILL
+      - CONTAIN
+      - COVER
+      - NONE
+      - SCALEDOWN
       - ZOOM
       - FIT
       - CENTER
     WidgetLayout:
-      description: The layout for a widget on a free dashboard.
+      description: The layout for a widget on a `free` or **new dashboard layout**
+        dashboard.
       properties:
         height:
           description: The height of the widget. Should be a non-negative integer.
@@ -12263,6 +12640,14 @@ components:
           format: int64
           minimum: 0
           type: integer
+        is_column_break:
+          default: false
+          description: 'Whether the widget should be the first one on the second column
+            in high density or not.
+
+            **Note**: Only for the **new dashboard layout** and only one widget in
+            the dashboard should have this property set to `true`.'
+          type: boolean
         width:
           description: The width of the widget. Should be a non-negative integer.
           example: 0
@@ -12358,12 +12743,20 @@ components:
       - PAST_ONE_YEAR
       - ALERT
     WidgetMargin:
-      description: Size of the margins around the image.
+      description: 'Size of the margins around the image.
+
+        **Note**: `small` and `large` values are deprecated.'
       enum:
+      - sm
+      - md
+      - lg
       - small
       - large
       type: string
       x-enum-varnames:
+      - SM
+      - MD
+      - LG
       - SMALL
       - LARGE
     WidgetMarker:
@@ -12623,6 +13016,17 @@ components:
       - MONTH_TO_DATE
       - PREVIOUS_MONTH
       - GLOBAL_TIME
+    WidgetVerticalAlign:
+      description: Vertical alignment.
+      enum:
+      - center
+      - top
+      - bottom
+      type: string
+      x-enum-varnames:
+      - CENTER
+      - TOP
+      - BOTTOM
     WidgetViewMode:
       description: Define how you want the SLO to be displayed.
       enum:
@@ -13330,21 +13734,8 @@ paths:
       x-given:
         dashboard:
           parameters:
-          - name: body
-            value: "{\n  \"layout_type\": \"ordered\",\n  \"title\": \"{{ unique }}\
-              \ with Profile Metrics Query\",\n  \"widgets\": [\n    {\n      \"definition\"\
-              : {\n        \"type\": \"timeseries\",\n        \"requests\": [\n  \
-              \        {\n            \"profile_metrics_query\": {\n             \
-              \ \"compute\": {\n                \"aggregation\": \"sum\",\n      \
-              \          \"facet\": \"@prof_core_cpu_cores\"\n              },\n \
-              \             \"search\": { \"query\": \"runtime:jvm\" },\n        \
-              \      \"group_by\": [\n                {\n                  \"facet\"\
-              : \"service\",\n                  \"limit\": 10,\n                 \
-              \ \"sort\": {\n                    \"aggregation\": \"sum\",\n     \
-              \               \"order\": \"desc\",\n                    \"facet\"\
-              : \"@prof_core_cpu_cores\"\n                  }\n                }\n\
-              \              ]\n            }\n          }\n        ]\n      }\n \
-              \   }\n  ]\n}"
+          - file: dashboard_payload.json
+            name: body
           step: there is a valid "dashboard" in the system
       x-menu-order: 1
       x-undo:
@@ -14256,7 +14647,8 @@ paths:
         `,`n` in your output.\n\n- This endpoint returns a maximum of `1000` most\
         \ recent results. To return additional results,\nidentify the last timestamp\
         \ of the last result and set that as the `end` query time to\npaginate the\
-        \ results."
+        \ results. You can also use the page parameter to specify which set of `1000`\
+        \ results to return."
       operationId: ListEvents
       parameters:
       - description: POSIX timestamp.
@@ -14298,12 +14690,36 @@ paths:
           Otherwise if an event is aggregated to a parent event with a timestamp outside
           of the timeframe,
 
-          it won''t be available in the output.'
+          it won''t be available in the output. Aggregated events with `is_aggregate=true`
+          in the response will still be returned unless exclude_aggregate is set to
+          `true.`'
         in: query
         name: unaggregated
         required: false
         schema:
           type: boolean
+      - description: 'Set `exclude_aggregate` to `true` to only return unaggregated
+          events where `is_aggregate=false` in the response. If the `exclude_aggregate`
+          parameter is set to `true`,
+
+          then the unaggregated parameter is ignored and will be `true` by default.'
+        in: query
+        name: exclude_aggregate
+        required: false
+        schema:
+          type: boolean
+      - description: 'By default 1000 results are returned per request. Set page to
+          the number of the page to return with `0` being the first page. The page
+          parameter can only be used
+
+          when either unaggregated or exclude_aggregate is set to `true.`'
+        in: query
+        name: page
+        required: false
+        schema:
+          format: int32
+          maximum: 2147483647
+          type: integer
       responses:
         '200':
           content:
@@ -19315,6 +19731,12 @@ paths:
               schema:
                 $ref: '#/components/schemas/APIErrorResponse'
           description: Forbidden
+        '404':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/APIErrorResponse'
+          description: SLO Not Found
       summary: Create an SLO correction
       tags:
       - Service Level Objective Corrections
@@ -19528,6 +19950,13 @@ paths:
         required: true
         schema:
           type: string
+      - description: Get the IDs of SLO monitors that reference this SLO.
+        example: true
+        in: query
+        name: with_configured_alert_ids
+        required: false
+        schema:
+          type: boolean
       responses:
         '200':
           content:
@@ -21604,6 +22033,53 @@ paths:
       tags:
       - Usage Metering
       x-menu-order: 2
+      x-undo:
+        type: safe
+  /api/v1/usage/logs-by-retention:
+    get:
+      description: Get hourly usage for indexed logs by retention period.
+      operationId: GetUsageLogsByRetention
+      parameters:
+      - description: 'Datetime in ISO-8601 format, UTC, precise to hour: `[YYYY-MM-DDThh]`
+          for usage beginning at this hour.'
+        in: query
+        name: start_hr
+        required: true
+        schema:
+          format: date-time
+          type: string
+      - description: 'Datetime in ISO-8601 format, UTC, precise to hour: `[YYYY-MM-DDThh]`
+          for usage ending
+
+          **before** this hour.'
+        in: query
+        name: end_hr
+        required: false
+        schema:
+          format: date-time
+          type: string
+      responses:
+        '200':
+          content:
+            application/json;datetime-format=rfc3339:
+              schema:
+                $ref: '#/components/schemas/UsageLogsByRetentionResponse'
+          description: OK
+        '400':
+          content:
+            application/json;datetime-format=rfc3339:
+              schema:
+                $ref: '#/components/schemas/APIErrorResponse'
+          description: Bad Request
+        '403':
+          content:
+            application/json;datetime-format=rfc3339:
+              schema:
+                $ref: '#/components/schemas/APIErrorResponse'
+          description: Forbidden - User is not authorized
+      summary: Get hourly logs usage by retention
+      tags:
+      - Usage Metering
       x-undo:
         type: safe
   /api/v1/usage/logs_by_index:
