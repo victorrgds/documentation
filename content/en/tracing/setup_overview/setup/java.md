@@ -45,25 +45,21 @@ Otherwise, to begin tracing your applications:
    ```
    To access a specific version of the tracer, visit Datadog's [Maven repository][4].
 
-2. Add the following JVM argument when starting your application in your IDE, Maven or Gradle application script, or `java -jar` command:
+2. To run your app from an IDE, Maven or Gradle application script, or `java -jar` command, with continuous profiler, deployment tracking, logs injection (if you are sending logs to Datadog), and Tracing without Limits, add the `-javaagent` JVM argument and the following configuration options, as applicable:
 
-   ```text
-    -javaagent:/path/to/the/dd-java-agent.jar
-   ```
+    ```text
+    java -javaagent:/path/to/dd-java-agent.jar -Ddd.profiling.enabled=true -XX:FlightRecorderOptions=stackdepth=256 -Ddd.logs.injection=true -Ddd.trace.sample.rate=1 -Ddd.service=my-app -Ddd.env=staging -jar path/to/your/app.jar -Ddd.version=1.0
+    ```
 
-3.
-
-| Env Var      | System Property                     | Description|
+| Environment Variable      | System Property                     | Description|
 | --------- | --------------------------------- | ------------ |
-| DD_ENV      | dd.env                  | Your application environment (e.g. production, staging, etc.) |
-| DD_SERVICE   | dd.service     | The name of a set of processes that do the same job. Used for grouping stats for your application. |
-| DD_VERSION | dd.version |  Your application version (e.g. 2.5, 202003181415, 1.3-alpha, etc.) |
-| DD_PROFILING_ENABLED      | dd.profiling.enabled                  | Enable the [Continous Profiler][5] |
-| DD_LOGS_INJECTION   | dd.logs.injection     | Enabled automatic MDC key injection for Datadog trace and span IDs. See [Advanced Usage][6] for details. |
-| DD_TRACE_SAMPLE_RATE | dd.trace.sample.rate |   Enable [Tracing without Limits][7]     |
-```text
-java -javaagent:/path/to/dd-java-agent.jar -Ddd.profiling.enabled=true -XX:FlightRecorderOptions=stackdepth=256 -Ddd.logs.injection=true -Ddd.trace.sample.rate=1 -Ddd.service=my-app -Ddd.env=staging -jar path/to/your/app.jar -Ddd.version=1.0
-```
+| `DD_ENV`      | `dd.env`                  | Your application environment (`production`, `staging`, etc.) |
+| `DD_SERVICE`   | `dd.service`     | The name of a set of processes that do the same job. Used for grouping stats for your application. |
+| `DD_VERSION` | `dd.version` |  Your application version (e.g., `2.5`, `202003181415`, `1.3-alpha`, etc.) |
+| `DD_PROFILING_ENABLED`      | `dd.profiling.enabled`          | Enable the [Continous Profiler][5] |
+| `DD_LOGS_INJECTION`   | `dd.logs.injection`     | Enable automatic MDC key injection for Datadog trace and span IDs. See [Advanced Usage][6] for details. |
+| `DD_TRACE_SAMPLE_RATE` | `dd.trace.sample.rate` |   Enable [Tracing without Limits][7]     |
+
 
 Additional [configuration options](#configuration) are described below.
 
