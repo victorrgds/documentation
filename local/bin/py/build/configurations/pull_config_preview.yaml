@@ -629,4 +629,5 @@
       globs:
         - "pkg/security/tests/schemas/*.json"
       options:
-        dest_path: '/security_platform/cloud_workload_security/'
+        is_data: true
+        dest_path: '/security_schemas/'

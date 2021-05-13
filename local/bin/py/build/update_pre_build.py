@@ -31,6 +31,11 @@ class Build:
             sep,
             "content" + sep + "en" + sep,
         )
+        self.data_dir = "{0}{1}{2}".format(
+            abspath(normpath(options.source)),
+            sep,
+            "data" + sep,
+        )
         self.extract_dir = "{0}".format(
             join(self.tempdir, "extracted") + sep
         )
@@ -69,7 +74,7 @@ class Build:
                     pull_and_push_folder(content, self.content_dir)
 
                 elif content["action"] == "pull-and-push-file":
-                    pull_and_push_file(content, self.content_dir)
+                    pull_and_push_file(content, self.content_dir, self.data_dir)
                 elif content["action"] in ("security-rules", "compliance-rules"):
                     security_rules(content, self.content_dir)
                 elif content["action"] == "Not Available":

@@ -174,3 +174,5 @@ data/permissions.json
 
 static/images/integrations_logos/2020w2.pdf
 
+# ignoring security json files
+data/security_schemas/
