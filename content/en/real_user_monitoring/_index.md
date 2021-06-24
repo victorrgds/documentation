@@ -67,6 +67,8 @@ View your [backend traces, logs, infrastructure metrics][1] down to the exact li
 
 Get automated alerts on outliers and groups of errors, timeouts, and crashes to significantly reduce your MTTR with [Error Tracking][4].
 
+{{< img src="real_user_monitoring/error_tracking/error-tracking.gif" alt="Error tracking in the Datadog app">}}
+
 ## Further Reading
 
 {{< partial name="whats-next/whats-next.html" >}}
