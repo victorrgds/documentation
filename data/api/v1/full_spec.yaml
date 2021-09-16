@@ -2292,6 +2292,7 @@ components:
       - operation_name
       - resource_name
       - service
+      - name
       type: object
     FormulaAndFunctionApmResourceStatName:
       description: APM resource stat name.
@@ -12214,7 +12215,7 @@ components:
           type: string
         end_date:
           description: Shows the last date of usage.
-          format: date-time
+          format: date
           type: string
         num_orgs:
           description: The number of organizations.
@@ -12232,7 +12233,7 @@ components:
           type: integer
         start_date:
           description: Shows the first date of usage.
-          format: date-time
+          format: date
           type: string
         usage:
           $ref: '#/components/schemas/UsageBillableSummaryKeys'
