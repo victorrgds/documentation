@@ -1,25 +1,70 @@
 {{ partial "nav/mobile-quicknav.html" . }}
 
-<div class="sidenav">
-    <div class="row">
-        <div class="col">
-            <a href="{{ "" | absLangURL }}"><h4>{{ i18n "datadog_docs" }}</h4></a>
+{{ $SignUpClass := .Site.Params.SignUpClass }}
+{{ $btnClass := "btn btn-secondary btn-info btn-outline outline knockout-around" }}
+{{ $base := "" | absLangURL }}
+{{ $dot := . }}
 
-            {{ partial "search-mobile.html" . }}
+{{ $dot := . }}
 
-            <div class="sidenav-nav sidenav-nav-main">
-                <!-- This was placed with js for build speed increase -->
-                {{ partialCached "nav/main-menu.html" . .Section }}
+{{ if hasPrefix $dot.RelPermalink "/api/" }}
+  {{ $apiMenu := "api" }}
+  <!-- if no api menu in other languages fallback to english -->
+  {{ with index .Site.Menus $apiMenu }}
+    {{ $dot.Scratch.Set "menu" . }}
+  {{ else }}
+    {{ $dot.Scratch.Set "menu" (index .Sites.First.Menus $apiMenu) }}
+  {{ end }}
+{{ else }}
+  {{ $dot.Scratch.Set "menu" .Site.Menus.main }}
+{{ end }}
+{{ $menu := .Scratch.Get "menu" }}
 
-
-
-            </div>
-        </div>
-    </div>
-</div>
-
-
-
-
-
+<ul class="">
+    <li>
+        <div class="mobile-nav-search-wrapper">{{ partial "search-mobile" $dot }}</div>
+    </li>
+    {{ range $menu }}
+        {{ if .HasChildren }}
+            <li class="dropdown">
+                <a href="#" class="dropdown-toggle text-uppercase font-weight-semibold" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="true">
+                    <div class="nav-menu-item ml-2">
+                        {{ if .Pre }}
+                          {{ partial "icon" (dict "name" .Pre "size" "18px" )}}
+                        {{ end }}
+                        {{ .Name | safeHTML }}
+                        <span class="caret">
+                            <svg viewBox="0 0 17.78 10.51" width="10px">
+                                <polyline class="dropdown-arrow" points="16.92 1.14 8.92 9.14 0.92 1.14" />
+                            </svg>
+                        </span>
+                    </div>
+                </a>
+                <ul class="dropdown-menu">
+                    {{ $parentMenuItem := . }}
+                    {{ range .Children }}
+                        <li>
+                            <a href="{{ if hasPrefix .URL "#" }}{{ (strings.TrimLeft "/" $parentMenuItem.URL) | absLangURL }}#{{ .Name | anchorize }}{{ else }}{{ (strings.TrimLeft "/" .URL) | absLangURL }}{{ end }}">
+                                <div class="nav-menu-item-children mb-0 ml-1">
+                                    {{ .Name | safeHTML }}
+                                </div>
+                            </a>
+                        </li>
+                    {{ end }}
+                </ul>
+            </li>
+        {{ else }}
+            <li>
+                <a href="{{- partial "menulink" (slice .Identifier ( .URL ) $base $dot ) | safeURL -}}" class="text-uppercase font-weight-semibold">
+                    <div class="nav-menu-item ml-2">
+                        {{ if .Pre }}
+                          {{ partial "icon" (dict "name" .Pre "size" "18px" )}}
+                        {{ end }}
+                        {{ .Name | safeHTML }}
+                    </div>
+                </a>
+            </li>
+        {{ end }}
+    {{ end }}
+</ul>
 
