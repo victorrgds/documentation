@@ -1,6 +1,10 @@
 ---
 title: Security Monitoring
 kind: documentation
+further_reading:
+- link: https://www.datadoghq.com/blog/writing-datadog-security-detection-rules/
+  tag: "Blog"
+  text: "Best practices for creating detection rules with Datadog Security Monitoring"
 ---
 
 ## Overview
@@ -20,6 +24,10 @@ Threats are surfaced in Datadog as Security Signals and can be correlated and tr
   {{< nextlink href="/security_platform/default_rules#cat-log-detection">}}Start using out-of-the-box Security Monitoring rules{{< /nextlink >}}
   {{< nextlink href="/security_platform/detection_rules">}}Create your own custom detection rules{{< /nextlink >}}
 {{< /whatsnext >}}
+
+## Further Reading
+
+{{< partial name="whats-next/whats-next.html" >}}
 
 [1]: /security_platform/security_monitoring/security_home/
 [2]: /security_platform/default_rules#cat-log-detection
