@@ -21,7 +21,7 @@ further_reading:
   tag: "Documentation"
   text: "Understand how to read a Datadog Trace"
 ---
-The APM UI provides many tools to troubleshoot application performance and correlate it throughout the product, which helps you find and resolve issues in highly distributed systems.
+The APM UI provides many tools to troubleshoot application performance and correlate it throughout the product, which helps you find and resolve issues in distributed systems.
 
 | Concept                         | Description                                                                                                                                                                                                          |
 |---------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -187,7 +187,7 @@ The active spans for a given time, for a given trace, are all of the leaf spans 
 {{< partial name="whats-next/whats-next.html" >}}
 
 [1]: /monitors/create/types/apm/
-[2]: /developers/faq/data-collection-resolution-retention/
+[2]: /developers/guide/data-collection-resolution-retention/
 [3]: /tracing/setup/
 [4]: /tracing/visualization/services_list/
 [5]: /tracing/visualization/services_map/
